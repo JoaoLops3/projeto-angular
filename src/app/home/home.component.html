@@ -1,0 +1,104 @@
+<section class="hero" @fadeIn>
+  <h2>Bem-vindo ao Meu App Angular</h2>
+  <p>Este é um exemplo de aplicação moderna usando Angular</p>
+  <button class="btn-primary" (click)="iniciarAplicacao()">Começar</button>
+  <p class="mensagem-boas-vindas" *ngIf="mensagemBoasVindas" @fadeIn>{{mensagemBoasVindas}}</p>
+</section>
+
+<section class="features" @listAnimation>
+  <div class="feature-card" 
+       *ngFor="let feature of features; let i = index"
+       [@cardHover]="cardHoverState"
+       (mouseenter)="onCardHover(i)"
+       (mouseleave)="onCardLeave(i)">
+    <h3>{{feature.title}}</h3>
+    <p>{{feature.description}}</p>
+  </div>
+</section>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 4rem 0;
+  }
+
+  .hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    animation: slideIn 0.8s ease-out;
+  }
+
+  .btn-primary {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .mensagem-boas-vindas {
+    margin-top: 1rem;
+    color: #27ae60;
+    font-weight: bold;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+    padding: 0 1rem;
+  }
+
+  .feature-card {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  .feature-card h3 {
+    color: #3498db;
+    margin-bottom: 1rem;
+  }
+
+  .feature-card p {
+    margin-bottom: 0;
+    color: #34495e;
+    line-height: 1.6;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
